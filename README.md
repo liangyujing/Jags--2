@@ -1,8 +1,7 @@
+```
 #setwd(<<insert your working directory>>)
 library(runjags)
 library(coda)
-
-
 
 ## 1.The model
 ##  dbeta
@@ -26,9 +25,6 @@ out <- run.jags( model="rate_simple_new.txt" , monitor=parameters ,
                  data=data ,  inits=myinits , n.chains=nchains ,  adapt=nadapt ,
                  burnin=nburn ,  sample=niter )
 
-
-
-
 ## dunif
 ## restore data list to original (no A or B)
 data = list( 
@@ -45,8 +41,6 @@ theta ~ dunif(0,1)
 "
 writeLines( modelString , con="rate_simple_new.txt" )
 
-
-
 ## 2.Input coding (R)
 
 data <-  c(
@@ -60,9 +54,6 @@ data <- list(
   k=0,
   n=0
 )
-
-
-
 
 ## Get additional information out of the modelv
 ## resetting initial values
@@ -80,9 +71,6 @@ out <- run.jags( model="rate_simple.txt" , monitor=parameters ,
 ##but you can’t sample from the posterior anymore.
 
 
-
-
-
 ## Sample from both the posterior and the prior in one run:
 
 modelString <- "
@@ -96,7 +84,7 @@ thetaprior ~ dbeta(1,1)
 }
 "
 writeLines(modelString,"rate_simple_new.txt")
-
+```
 
 
 
